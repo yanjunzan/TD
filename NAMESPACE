@@ -1,0 +1,18 @@
+export(
+  get_density_input,
+  get.info,
+  wrap_get_density,
+  filter_co,
+  Count_Double_XO_by_chr,
+  Extract_Double_co_by_chr,
+  Extract_Double_co_all_chr,
+  Count_XO_by_chr,
+  Extract_co_by_chr,
+  Extract_co_all_chr,
+  Extract_by_chr,
+  Extract_all,
+  summary_tig,
+  Mat2geno,
+  Remove_het_mat,
+  Export2rqtl
+)

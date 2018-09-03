@@ -1,0 +1,16 @@
+Package: TD
+Type: Package
+Title: This is a R package processing output from TIGER pipeline.
+Version: 0.1.0
+Author: Yanjun Zan, Thibaut Payen
+Maintainer: Yanjun Zan <yanjunzan@gmail.com>
+Description: QC data from TIGER pipeline and reformat output to a useful format for downstream linkage analysis and QTL detection
+License: GPL(>=3)
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.1.0)
+Imports:
+  qtl,
+  data.table
+  
+
