@@ -1,7 +1,11 @@
+### INSTALLATION
+First download the package from https://github.com/yanjunzan/TD/blob/master/TD_0.1.0.tar.gz
+install GBSA package by typing the following command in terminal
+R CMD INSTALL ./TD_0.1.0.tar.gz
 
-### 1. Evaluating the input
+### 1. Evaluating the marker density in input files
 
-
+We will remove individual with too low marker density(<5 Markers/Mb)
 ```{r eval=FALSE}
 
 input_folder <-"/home/thibaut/Gallus/Projects/genotypeTIGER/data/with.fam.f2.call2-v2/" # this is a link to the output foler
@@ -20,6 +24,7 @@ for( i in 1:nrow(out.put)){
     #out.put[i,] <- wrap_get_density(inputfile = input_now,binsize =1,cut = T,cutoff = 0, chr.match = #"/home/yanjun/projects/F2_seq/F2_re_seq/data/chr_id.match.txt")
     cat(i, "\n")
 }
+
 # get density
 density <- apply(out.put,1,mean)
 ## get id with more than 5 Markers/Mb
@@ -52,6 +57,8 @@ Alternatively, we could check the number of cross over with/without filtering(by
 cross_w_f_3 <- Extract_co_all_chr(chromosome = chr,id_all = id_all[index.keep],all_vcf = all_vcf[index.keep],gap=3e6,filter=T)
 
 ```
+
+Users can extract number of double- /single cross over from here to make a cut off
 ## 3. Extract genotypes
 
 we will get a matrix, with each row represents one individual and each column a block in the genome in which no crossover event was identified in the population.
@@ -61,15 +68,16 @@ Here we decided to remove genotypes which swiched twice within 3 Mb.
 ```{r eval=FALSE}
 out_3 <- Extract_all(chromosome = chr,id_all = id_all[index.keep],all_vcf = all_vcf[index.keep],gap=3e6,filter = T )
 ```
+Users can extract call rate from out_3 data.matrix to make a cut off.
 
 ## 4. Format genotype to consecutive genomic bins
 
-The genotypes we obtained might has too many bins due to gaps in the imputed data or imputation errors, which is not favoured in linkage map estimation. Here, we further averaged these bins into evenly spaced genomic bins.
+The genotypes we obtained might has  many bins due to i) we are trying to capturing every recombination, ii)gaps in the imputed data or imputation errors, which is not favoured in linkage map estimation. Here, we further averaged these bins into evenly spaced genomic bins.
+
+For associations, we strongly recomend to use this matrix as it is to scan for QTL
 
 ```{r eval=FALSE}
-chr.match <- read.table("/home/yanjun/projects/F2_seq/F2_re_seq/data/chr_id.match.txt",stringsAsFactors = F,header=T)
-
-chr.match <- read.table("/Volumes/office-home/impute/git/F2_re_seq/data/chr_id.match.txt",stringsAsFactors = F,header=T)
+chr.match <- read.table("/home/yanjun/projects/F2_seq/F2_re_seq/data/chr_id.match.txt",stringsAsFactors = F,header=T) # this file is saved at system.file(package="TD") after installation
 length.chr <- ceiling(chr.match$Size.Mb.)
 names(length.chr) <- chr.match$Name
 mat_3 <- Mat2geno(out = out_3,id = id_all[index.keep],length.chr = length.chr)
