@@ -1,9 +1,3 @@
----
-title: "Package tutorial TD"
-author: "Yanjun Zan, Thibaut Payen, Örjan Carlborg"
-date: "3 Sep 2018"
-output: pdf_document
----
 
 ### 1. Evaluating the input
 
