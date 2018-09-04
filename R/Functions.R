@@ -85,8 +85,7 @@ get.info <- function(chroms,chroms.len,bin.size=1e6){
   }
   return(list("num.bin" = num.bin,"index"=index,"loca"=loca,"loca.chr"=loca.chr,"chr.loca"=chr.loca))
 }
-wrap_get_density<- function(inputfile,binsize,cut=T,chr.match,cutoff=10){
-  test <- get_density_input(inputfile=inputfile,binsize=binsize,cut=T,chr.match=chr.match,cutoff=cutoff)
+wrap_get_density<- function(chr.match,test){
   chr.match <- fread(chr.match)
   chroms <- chr.match$INSDC
   chroms.len <- chr.match$`Size(Mb)`*1e6
@@ -110,7 +109,6 @@ wrap_get_density<- function(inputfile,binsize,cut=T,chr.match,cutoff=10){
   #output.count[,which(output.count > 50)] <- 50
   return(output.count)
 }
-
 #####filter out these with less than 5 marker/mb
 ##################################################################################################################################
 ##################################################################################################################################
