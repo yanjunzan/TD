@@ -1,6 +1,6 @@
 ### INSTALLATION
 First download the package from https://github.com/yanjunzan/TD/blob/master/TD_0.1.0.tar.gz
-install GBSA package by typing the following command in terminal
+install this package by typing the following command in terminal
 R CMD INSTALL ./TD_0.1.0.tar.gz
 
 ### 1. Evaluating the marker density in input files
