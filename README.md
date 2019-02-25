@@ -21,8 +21,9 @@ require(data.table)
 for( i in 1:nrow(out.put)){
     input_now <- paste0(input_folder,all_vcf[i])
     total[i] <- nrow(fread(input_now))
-    #num_now<- get_density_input()
-    out.put[i,] <- wrap_get_density(inputfile = input_now,binsize =1,cut = T,cutoff = 0, chr.match = "/home/yanjun/projects/F2_seq/F2_re_seq/data/chr_id.match.txt")
+     num_now<- get_density_input(inputfile = input_now,binsize =1,cut = T,cutoff = 0, chr.match = "/home/yanjun/projects/F2_seq/F2_re_seq/data/chr_id.match.txt")
+    out.put[i,] <- wrap_get_density(test =num_now,chr.match = "/home/yanjun/projects/F2_seq/F2_re_seq/data/chr_id.match.txt" )
+    
     cat(i, "\n")
 }
 
