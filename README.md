@@ -6,6 +6,7 @@ R CMD INSTALL ./TD_0.1.0.tar.gz
 ### 1. Evaluating the marker density in input files
 
 We will remove individual with too low marker density(<5 Markers/Mb)
+Please note that the regular expression(gsub) at the thrid line has to match the folder name where the TIGER output is stored 
 ```{r eval=FALSE}
 
 input_folder <-"/home/thibaut/Gallus/Projects/genotypeTIGER/data/with.fam.f2.call2-v2/" # this is a link to the output foler
