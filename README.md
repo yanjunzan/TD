@@ -44,7 +44,8 @@ Here we first have a look by filtering out genotype swithed twich in less than 3
 
 
 ```{r eval=FALSE}
-
+input_folder <- "/home/thibaut/Gallus/Projects/genotypeTIGER/data/with.fam.f2.call2-v2TIGER_OUT/"
+all_vcf <- list.dirs(path = input_folder)
 all <- list.files(all_vcf,pattern = "\\d+\\.vcf\\.(\\d+)\\.rough_COs\\.refined\\.breaks.txt")
 chr <- sort(as.numeric(unique(gsub(pattern = "\\d+\\.vcf\\.(\\d+)\\.rough_COs\\.refined\\.breaks.txt",replacement = "\\1",x = all))))
 index.keep <- which(id_all %in% id.keep)
